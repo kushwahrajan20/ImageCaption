@@ -202,6 +202,7 @@ class ImageCaptionGenerator(tf.keras.Model):
 
     @classmethod
     def from_config(cls, config):
+        config.pop("dtype", None) # debuging remove this **
         return cls(**config)
 
 # Load model and tokenizer
