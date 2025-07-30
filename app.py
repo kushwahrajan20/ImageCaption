@@ -10,6 +10,7 @@ from tensorflow.keras.models import load_model
 from keras.utils import register_keras_serializable
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.applications.efficientnet import preprocess_input
+from tensorflow.keras import mixed_precision
 
 # --- 1. Bahdanau Attention Layer ---
 
@@ -202,7 +203,9 @@ class ImageCaptionGenerator(tf.keras.Model):
 
     @classmethod
     def from_config(cls, config):
-        config.pop("dtype", None) # debuging remove this **
+        # Fix mixed precision policy if it's a string
+        if "dtype" in config and isinstance(config["dtype"], str):
+            config["dtype"] = mixed_precision.Policy(config["dtype"])
         return cls(**config)
 
 # Load model and tokenizer
@@ -211,7 +214,7 @@ def load_model_tokenizer():
     model = load_model("model3.keras", custom_objects={
             "ImageCaptionGenerator": ImageCaptionGenerator,
             "BahdanauAttention": BahdanauAttention
-        }, compile=False  # 🔥 Critical fix
+        } # , compile=False  # 🔥 Critical fix
     )   
     with open("tokenizer.pkl", "rb") as f:
         tokenizer = pickle.load(f)
