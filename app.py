@@ -209,9 +209,10 @@ class ImageCaptionGenerator(tf.keras.Model):
 @st.cache_resource
 def load_model_tokenizer():
     model = load_model("model3.keras", custom_objects={
-    "ImageCaptionGenerator": ImageCaptionGenerator,
-    "BahdanauAttention": BahdanauAttention
-})
+            "ImageCaptionGenerator": ImageCaptionGenerator,
+            "BahdanauAttention": BahdanauAttention
+        }, compile=False  # 🔥 Critical fix
+    )   
     with open("tokenizer.pkl", "rb") as f:
         tokenizer = pickle.load(f)
     return model, tokenizer
