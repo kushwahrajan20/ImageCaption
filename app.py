@@ -237,7 +237,7 @@ uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png
 
 if uploaded_file:
     img = Image.open(uploaded_file).convert("RGB")
-    st.image(img, caption="Uploaded Image", use_container_width=True)
+    st.image(img, caption="Uploaded Image")
 
     if st.button("Generate Caption"):
         image_tensor = preprocess_image(img)  # Now resized to (299, 299)
