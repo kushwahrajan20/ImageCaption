@@ -3,3 +3,4 @@ tensorflow==2.18.0
 keras==3.8.0
 Pillow==10.3.0
 numpy==1.26.4
+streamlit-cropper==0.3.1
