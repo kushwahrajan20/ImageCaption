@@ -1,4 +1,3 @@
-#to run--> streamlit run app.py
 # To run: streamlit run app.py
 
 import streamlit as st
@@ -41,6 +40,7 @@ def preprocess_image(pil_img, target_size=(299, 299)):
 
 # ------------------------ UI Layout ------------------------ #
 st.markdown("<h1 style='text-align: center;'>🖼️ Smart Image Captioning</h1>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align: center;'>Created by <b>Dayshaun Kakadiya</b> and <b>Rajan Kushwah</b></h3>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center;'>Upload, Crop, and Caption any image using AI!</p>", unsafe_allow_html=True)
 
 # ------------------------ Upload Image ------------------------ #
