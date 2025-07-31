@@ -2,6 +2,8 @@
 # To run: streamlit run app.py
 
 import streamlit as st
+st.set_page_config(page_title="Image Caption Generator", page_icon="🖼️", layout="centered")
+
 from PIL import Image
 import pickle
 import numpy as np
@@ -38,7 +40,6 @@ def preprocess_image(pil_img, target_size=(299, 299)):
     return tf.convert_to_tensor(img_array, dtype=tf.float32)
 
 # ------------------------ UI Layout ------------------------ #
-st.set_page_config(page_title="Image Caption Generator", page_icon="🖼️", layout="centered")
 st.markdown("<h1 style='text-align: center;'>🖼️ Smart Image Captioning</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center;'>Upload, Crop, and Caption any image using AI!</p>", unsafe_allow_html=True)
 
